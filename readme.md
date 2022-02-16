@@ -8,13 +8,15 @@ Provide 2 ISO dates and recieve back an array of objects, representing each day 
 
 ## What does it do?
 
-Simply povide any two ISO 8601 formatted date string, or javascript Date object. days-of-the-week will determine which date is earliest and return an array of Date objects for each day within the duration.
+Simply povide any two ISO 8601 formatted date string, or javascript Date class objects. days-of-the-week will determine which date is earliest and return an array of Date objects for each day within the duration.
 <br>
 <br>
 Although times are accepted as part of the 2 expected input parameters, they are not considered during rendering. All outputted Date objects will be set to midnight.
 
+second property defaults to `new Date()` if no value is provided
+
 ```
-const { days } = require('days-of-the-week');
+const days = require('days-of-the-week');
 
 const arrayOfDays = days(new Date(), '2022-02-17 07:52:45')
 
