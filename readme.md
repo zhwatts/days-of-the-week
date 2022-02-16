@@ -17,6 +17,8 @@ Although times are accepted as part of the 2 expected input parameters, they are
 const { days } = require('days-of-the-week');
 
 const arrayOfDays = days(new Date(), '2022-02-17 07:52:45')
+
+console.log(arrayOfDays)
 ```
 
 will output
