@@ -24,21 +24,35 @@ const validateDateStringFormat = (dateString) => {
 module.exports = function (firstDate, secondDate = new Date()) {
 	const DATE_ONE = new Date();
 	const DATE_TWO = new Date();
+	const DATE_ARRAY = [];
 
 	/** CHECK THAT PROVIDED ARGUMENTS CAN BE INITIALIZED AS DATE CLASS */
 	if (!(firstDate instanceof Date))
 		try {
-			DATE_ONE.setFullYear(...validateDateStringFormat(firstDate));
+			new Date(...validateDateStringFormat(firstDate)) > secondDate
+				? DATE_TWO.setFullYear(...validateDateStringFormat(firstDate))
+				: DATE_ONE.setFullYear(...validateDateStringFormat(firstDate));
 		} catch (err) {
 			return new Error("First date parameter is not ISO formatted");
 		}
 
 	if (!(secondDate instanceof Date))
 		try {
-			DATE_TWO.setFullYear(...validateDateStringFormat(secondDate));
+			new Date(...validateDateStringFormat(secondDate)) >
+			new Date(...validateDateStringFormat(firstDate))
+				? DATE_TWO.setFullYear(...validateDateStringFormat(secondDate))
+				: DATE_ONE.setFullYear(...validateDateStringFormat(secondDate));
 		} catch (err) {
 			return new Error("Second date parameter is not ISO formatted");
 		}
 
-	return [DATE_ONE, DATE_TWO];
+	let cursor = new Date(DATE_ONE);
+
+	while (cursor <= DATE_TWO) {
+		DATE_ARRAY.push(new Date(cursor));
+
+		cursor.setDate(cursor.getDate() + 1);
+	}
+
+	return DATE_ARRAY;
 };

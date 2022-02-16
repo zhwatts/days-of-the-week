@@ -1,7 +1,7 @@
 {
 	"name": "days-of-the-week",
 	"version": "0.0.0",
-	"description": "Provide two ISO dates or Date class objects and receive back an array of objects representing each date between them",
+	"description": "Provide two ISO date strings or Date class objects and receive back an array of objects representing each date between them",
 	"main": "index.js",
 	"repository": "https://github.com/zhwatts/days-of-the-week",
 	"author": "Zach Watts <zach@zachwatts.online>",
